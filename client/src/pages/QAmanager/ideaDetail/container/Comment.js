@@ -17,8 +17,7 @@ const Comment = ({ data }) => {
     const { users, idea, user } = data;
     const [comment, setComment] = React.useState('')
     const { commentState: { comments }, getCommentByIdea, PostComment } = React.useContext(CommentContext)
-    React.useEffect(() => { getCommentByIdea(idea.id) })
-    console.log(comments);
+    React.useEffect(() => { getCommentByIdea(idea.id) }, [])
 
     const handelComment = async () => {
         const commentForm = {
@@ -67,6 +66,9 @@ const Comment = ({ data }) => {
                 <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     {comments.map((comment) => {
                         const findUser = users.find(user => user.userId === comment.replyBy)
+                        if (!findUser) {
+                            return null
+                        }
                         return (
                             <>
                                 <ListItem alignItems="flex-start">
