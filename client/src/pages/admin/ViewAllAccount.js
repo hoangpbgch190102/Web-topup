@@ -47,9 +47,16 @@ const ViewAllAccount = () => {
     }
 
     // get current users
+    const newUsers = users.sort((a, b) => {
+        if (a.role > b.role)
+            return -1;
+        if (a.role < b.role)
+            return 1;
+        return 0;
+    })
     const indexOfLastUser = currentPage * userPerPage
     const indexOfFirstUser = indexOfLastUser - userPerPage
-    const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser)
+    const currentUsers = newUsers.slice(indexOfFirstUser, indexOfLastUser)
 
     // change pagination
     const paginate = number => {
@@ -75,8 +82,8 @@ const ViewAllAccount = () => {
                     <Table size="larger" sx={{ minWidth: 900, marginTop: '30px' }}>
                         <TableHead >
                             <TableRow >
-                                <TableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Number</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Name</TableCell>
+                                <TableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Gender</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Email</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>date Of Birth</TableCell>
                                 <TableCell sx={{ fontWeight: 'bold', textAlign: 'center' }}>Department</TableCell>
@@ -88,8 +95,8 @@ const ViewAllAccount = () => {
                                 const dateOfBirth = user.dateOfBirth.split("T")
                                 return (
                                     <TableRow key={user.userId}>
-                                        <TableCell align="center">{index + 1}</TableCell>
                                         <TableCell align="center">{user.firstName} {user.lastName}</TableCell>
+                                        <TableCell align="center">{user.gender}</TableCell>
                                         <TableCell align="center">{user.email}</TableCell>
                                         <TableCell align="center">{dateOfBirth[0]}</TableCell>
                                         <TableCell align="center">
@@ -120,7 +127,7 @@ const ViewAllAccount = () => {
                         : <Pagination perPage={userPerPage} total={users.length} paginate={paginate} />
                     }
                 </React.Fragment >
-                : <UpdateAccount />
+                : <UpdateAccount setEdit={setEdit} />
             }
         </>
     );

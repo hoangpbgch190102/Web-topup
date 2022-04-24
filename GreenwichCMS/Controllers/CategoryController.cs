@@ -35,7 +35,7 @@ namespace GreenwichCMS.Controllers
             var signal = _categoryService.CreateCategory(cateDto);
             if (signal == "ok")
             {
-                return Ok("Create category successfully");
+                return Ok(cateDto);
             }
             else
             {
