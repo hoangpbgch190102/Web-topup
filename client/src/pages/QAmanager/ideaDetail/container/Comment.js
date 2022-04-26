@@ -10,6 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { CommentContext } from '../../../../contexts/CommentContext';
+import { TopicContext } from '../../../../contexts/TopicContext';
 
 import '../../../home/ideaDetail/IdeaDetail.css';
 
@@ -17,7 +18,9 @@ const Comment = ({ data }) => {
     const { users, idea, user } = data;
     const [comment, setComment] = React.useState('')
     const { commentState: { comments }, getCommentByIdea, PostComment } = React.useContext(CommentContext)
+    const { topicState: { topics }, getAllTopic } = React.useContext(TopicContext)
     React.useEffect(() => { getCommentByIdea(idea.id) }, [])
+    React.useEffect(() => { getAllTopic() }, [])
 
     const handelComment = async () => {
         const commentForm = {
@@ -25,8 +28,22 @@ const Comment = ({ data }) => {
             replyBy: user.userId,
             content: comment
         }
-        await PostComment(commentForm)
-        setComment('')
+        const findTopic = topics.find(topic => topic.title === idea.ideaCategoryName)
+        const today = new Date();
+        const someday = new Date();
+        const year = findTopic.finalClosureDate.slice(0, 4)
+        const month = findTopic.finalClosureDate.slice(5, 7) - 1
+        const day = findTopic.finalClosureDate.slice(8, 10)
+        someday.setFullYear(year, month, day);
+        console.log(someday);
+        if (today > someday) {
+            window.alert('You were late for the comment.!')
+            setComment('')
+        }
+        else {
+            await PostComment(commentForm)
+            setComment('')
+        }
     }
 
     return (

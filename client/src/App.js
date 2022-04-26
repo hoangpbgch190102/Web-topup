@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from './pages/login';
 import AdminPage from './pages/admin';
 import HomePage from './pages/home';
+import PostingRules from './pages/home/PostingRules';
 import LandingPage from './pages/landing';
 import QAmanager from './pages/QAmanager';
 import QAcoordinator from './pages/QAcoordinator';
@@ -62,6 +63,7 @@ function App() {
                   <Route path="/postIdea" element={<HomePage task='postIdea' />} />
                   <Route path="/ideaDetail-home" element={<HomePage task='ideaDetail' />} />
                   <Route path="/change-password-homepage" element={<ChangePasswordHome />} />
+                  <Route path="/Terms-conditions" element={<PostingRules />} />
 
                   <Route path="/qa-coordinator" element={<ProtectedRouteQACoordinator redirectTo='/login'>
                     <QAcoordinator />

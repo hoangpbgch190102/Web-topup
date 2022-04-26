@@ -180,7 +180,7 @@ const CreatePost = () => {
                         <Typography id="modal-modal-description" sx={{ mt: 2, textAlign: 'center' }}>
                             Before posting material, by clicking "accept", you agree to the terms and conditions on our
                             website as described in
-                            "<a href="http://google.com" target="_blank" rel="noreferrer">Our Terms and Conditions</a>"
+                            "<a href="/Terms-conditions" target="_blank" rel="noreferrer">Our Terms and Conditions</a>"
                             <p>Do you agree to the terms before posting the material?</p>
                         </Typography>
                         <div className="modal-button">

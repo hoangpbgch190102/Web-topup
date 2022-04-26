@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale } from 'chart.js';
+import { IdeaContext } from '../../../contexts/IdeaContext';
 
 ChartJS.register(
     CategoryScale,
@@ -9,6 +10,20 @@ ChartJS.register(
 )
 
 const BarChart = () => {
+    const { getAllIdea, ideaState: { ideas } } = React.useContext(IdeaContext)
+    React.useEffect(() => { getAllIdea() }, [])
+
+    const goodIdeas = ideas.sort((a, b) => {
+        return b.likeCount - a.likeCount
+    }).slice(0, 10)
+
+    const userNameList = []
+    const likeCountList = []
+
+    goodIdeas.forEach(idea => {
+        userNameList.push(idea.userName)
+        likeCountList.push(idea.likeCount)
+    })
 
     const options = {
         responsive: true,
@@ -21,10 +36,10 @@ const BarChart = () => {
     };
 
     const data = {
-        labels: ['GCH190102', 'GCH190103', 'GCH190104', 'GCH190105', 'GCH190106', 'GCH190107', 'GCH190108', 'GCH190109'],
+        labels: userNameList,
         datasets: [{
             label: '# of Votes',
-            data: [10, 1, 0, 0, 0, 0, 0, 0],
+            data: likeCountList,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

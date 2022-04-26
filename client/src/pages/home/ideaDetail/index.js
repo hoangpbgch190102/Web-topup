@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Vote from '../Vote';
 import Comment from '../../QAmanager/ideaDetail/container/Comment';
-import Avatar from '@mui/material/Avatar';
 import { IdeaContext } from '../../../contexts/IdeaContext';
 import { ReactionContext } from '../../../contexts/ReactionContext';
 import { AuthContext } from '../../../contexts/AuthContext';
