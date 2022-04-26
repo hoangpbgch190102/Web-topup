@@ -8,10 +8,17 @@ import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import PreviewIcon from '@mui/icons-material/Preview';
 
 export const mainListItems = (
 
     <React.Fragment>
+        <ListItemButton as={NavLink} activeclassname="active" to='/admin/popular-ideas'>
+            <ListItemIcon>
+                <PreviewIcon />
+            </ListItemIcon>
+            <ListItemText primary="Most popular ideas" style={{ color: 'rgb(61 55 47)' }} />
+        </ListItemButton>
         <ListItemButton as={NavLink} activeclassname="active" to='/admin/create'>
             <ListItemIcon>
                 <AddBoxIcon />

@@ -11,7 +11,6 @@ const ReadMore = ({ children, goodIdea }) => {
         setIsReadMore(!isReadMore);
         findIdea(goodIdea.id)
     };
-    console.log(text.slice(0, 63));
     return (
         <p className="text">
             {isReadMore ? text.slice(0, 63) : text}

@@ -22,7 +22,7 @@ const TopicContextProvider = ({ children }) => {
                 })
             }
         } catch (e) {
-            console.log(e.response.data);
+
         }
     }
 

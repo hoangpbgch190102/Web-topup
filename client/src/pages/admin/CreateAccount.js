@@ -167,7 +167,6 @@ const CreateAccount = () => {
                                 <MenuItem value='Quality Assurance Manager'>Quality Assurance Manager</MenuItem>
                                 <MenuItem value='Quality Assurance Coordinator'>Quality Assurance Coordinator</MenuItem>
                                 <MenuItem value='Staff'>Staff</MenuItem>
-                                <MenuItem value='Admin'>Admin</MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>

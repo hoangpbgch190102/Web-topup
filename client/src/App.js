@@ -40,6 +40,7 @@ function App() {
                   <Route path="/admin" element={<ProtectedRouteAdmin redirectTo='/login'>
                     <AdminPage />
                   </ProtectedRouteAdmin>} />
+                  <Route path="/admin/popular-ideas" element={<AdminPage task='popularIdeas' />} />
                   <Route path="/admin/create" element={<AdminPage task='create' />} />
                   <Route path="/admin/viewAll" element={<AdminPage task='viewAll' />} />
                   <Route path="/admin/deadline" element={<AdminPage task='deadline' />} />

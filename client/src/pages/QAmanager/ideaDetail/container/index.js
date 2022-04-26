@@ -36,8 +36,7 @@ const Container = () => {
     const downloadSingleFile = async (url) => {
         await downloadFile(idea.id)
         saveAs(
-            `https://localhost:5001/${url}`,
-            "example.docx"
+            `/${url}`
         );
     }
 

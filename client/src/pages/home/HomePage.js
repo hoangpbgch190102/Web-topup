@@ -55,7 +55,7 @@ const Body = () => {
         const file = await downloadFile(id)
         const url = file.slice(61)
         saveAs(
-            `https://localhost:5001/FileIdea\\${url}`
+            `/${url}`
         );
     }
 
@@ -122,7 +122,7 @@ const Body = () => {
                                         color: '#fff',
                                         padding: '5px',
                                         backgroundColor: '#4991df',
-                                        maxWidth: '395px',
+                                        // maxWidth: '395px',
                                         borderRadius: '5px'
                                     }}>
                                         {ideaData.ideaCategoryName}
@@ -140,19 +140,22 @@ const Body = () => {
                                             download document
                                         </IconButton>
                                     </Box>
-                                    <Box sx={{ display: 'flex' }}>
+                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
                                         <Box className="control" >
                                             <Button
                                                 as={Link}
                                                 to="/ideaDetail-home"
-                                                sx={{ textDecoration: 'none', display: 'flex', justifyContent: 'flex-start', color: '#6c6b6b' }}
+                                                sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', color: '#6c6b6b' }}
 
                                             >
-                                                <div><ChatBubbleOutlineIcon fontSize='small' /></div>
+                                                <ChatBubbleOutlineIcon fontSize='small' />
                                                 <span>comments</span>
                                             </Button>
                                         </Box>
-                                        <Vote data={data} />
+                                        <Box sx={{ padding: '5px 10px', backgroundColor: '#4991df', color: '#fff', borderRadius: '5px' }}>
+                                            <span style={{ marginRight: "5px" }}>Vote</span>
+                                            <span>{ideaData.likeCount - ideaData.disLikeCount}</span>
+                                        </Box>
                                     </Box>
                                 </div >
                             </Box>

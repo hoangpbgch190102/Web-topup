@@ -86,7 +86,7 @@ const CreatePost = () => {
         })
 
         formData.append("Author", user.userId)
-        formData.append("Title", 'ok')
+        formData.append("Title", Math.random())
         formData.append("Slug", 'ok')
         formData.append("Content", content)
         formData.append("Privacy", checked)

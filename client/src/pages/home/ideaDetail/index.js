@@ -33,10 +33,10 @@ const IdeaDetail = () => {
     const dataComment = { comments, users: userState.users, idea, user }
 
     const downloadSingleFile = async (url) => {
-        await downloadFile(idea.id)
+        // await downloadFile(idea.id)
+        console.log(url);
         saveAs(
-            `https://localhost:5001/${url}`,
-            "example.docx"
+            `/${url}`
         );
     }
 

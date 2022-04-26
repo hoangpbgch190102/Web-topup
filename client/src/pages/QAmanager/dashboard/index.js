@@ -101,7 +101,7 @@ const Dashboard = () => {
                     <Grid item md={4} xs={12}>
                         <div className="dashboard-statistical__pie-chart1">
                             <div className="pie-chart__title">
-                                Number of ideas by each department compared to this year
+                                Top 5 topic which have highest ideas
                             </div>
                             <PieChart />
                         </div>
